@@ -51,9 +51,8 @@ export function dynamicRef(cxt: KeywordCxt, ref: string): void {
       // Pre-register if we just compiled the anchor schema
       if (anchorValidate) {
         const av = anchorValidate
-        gen.if(
-          _`!${N.dynamicAnchors}${getProperty(anchor)}`,
-          () => gen.assign(_`${N.dynamicAnchors}${getProperty(anchor)}`, av)
+        gen.if(_`!${N.dynamicAnchors}${getProperty(anchor)}`, () =>
+          gen.assign(_`${N.dynamicAnchors}${getProperty(anchor)}`, av)
         )
       }
       // Dynamic lookup at runtime
